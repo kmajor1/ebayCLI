@@ -9,6 +9,30 @@ let postOrBid = [
     }
 ]
 
+// posting questions 
+let postingQuestions = [
+    {
+        type: 'input',
+        name: 'itemName',
+        message: 'Please provide a name for your item:'
+
+    },
+    {
+        type: 'input',
+        name: 'itemDesc',
+        message: 'Please provide an item description:'
+    },
+    {
+        type: 'input',
+        name: 'itemMSRP',
+        message: 'Please enter an MSRP:'
+    },
+    {
+        type: 'input',
+        name: 'item'
+    }
+]
+
 // opening prompt 
 cli.prompt(postOrBid)
     .then(function(response) {
@@ -34,27 +58,10 @@ cli.prompt(postOrBid)
     // function for posting interface 
     function IPost() {
         // create questions object 
-        let postingQuestions = [
-            {
-                type: 'input',
-                name: 'itemName',
-                message: 'Please provide a name for your item:'
-
-            },
-            {
-                type: 'input',
-                name: 'itemDesc',
-                message: 'Please provide an item description:'
-            },
-            {
-                type: 'input',
-                name: 'itemMSRP',
-                message: 'Please enter an MSRP:'
-            },
-            {
-                type: 'input',
-                name: 'item'
-            }
-
-        ]
+        cli.prompt(postingQuestions)
+            .then(function (res) {
+                console.log(res); 
+            })
+        
+        
     }
