@@ -15,6 +15,7 @@ cli.prompt(postOrBid)
         // if post, call a posting interface 
         if (response.postOrBid === 'Post') {
             // call posting interface 
+            IPost();
         } 
         else if (response.postOrBid === 'Bid') {
             // call bidding interface 
@@ -28,4 +29,32 @@ cli.prompt(postOrBid)
     function IBid() {
         // load prompt that takes in bidding info? 
 
+    }
+
+    // function for posting interface 
+    function IPost() {
+        // create questions object 
+        let postingQuestions = [
+            {
+                type: 'input',
+                name: 'itemName',
+                message: 'Please provide a name for your item:'
+
+            },
+            {
+                type: 'input',
+                name: 'itemDesc',
+                message: 'Please provide an item description:'
+            },
+            {
+                type: 'input',
+                name: 'itemMSRP',
+                message: 'Please enter an MSRP:'
+            },
+            {
+                type: 'input',
+                name: 'item'
+            }
+
+        ]
     }
