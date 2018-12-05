@@ -77,7 +77,6 @@ cli.prompt(postOrBid)
 
     // bid list function 
     function bidList(answers) {
-        
         return ['a','b'];
     }
 
