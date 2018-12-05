@@ -1,6 +1,6 @@
 const cli = require('inquirer'); 
-const query = require('./query.js');
-query.bidQuery(); 
+const searches = require('./query.js');
+ 
 
 // post or bid command line object for inquirer
 let postOrBid = [
@@ -36,24 +36,28 @@ let postingQuestions = [
 
     // function for bidding interface 
     function IBid() {
-        // receive data from John's function 
-        cli.prompt([
-            {
-                type: 'list',
-                name: 'bids',
-                message: 'What item would you like to bid on?',
-                choices: bidList()
-            }
-        ])
-        .then(function (res) {
-            console.log(res);
-        });
+        // create a new promise 
+        let qPromise = new Promise(function(resolve,reject) {
+            searches.bidQuery();
+            resolve(searches.bidData);
+            reject(console.log('no good'));
+        })
+
+        qPromise.then(function (value) {
+            console.log(value);
+            
+            
+        })
 
     }
+        
+
+    
 
     // bid list function 
-    function bidList(answers) {
-         
+    function assembleChoices() {
+        // run the query 
+    
     }
 
     // function for posting interface 
@@ -87,4 +91,9 @@ cli.prompt(postOrBid)
         // something weird happened 
     }
 });
+
+// invoke bidlist 
+
+
+
 
