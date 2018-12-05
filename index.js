@@ -1,5 +1,6 @@
 const cli = require('inquirer'); 
 const query = require('./query.js');
+query.bidQuery(); 
 
 // post or bid command line object for inquirer
 let postOrBid = [
@@ -52,7 +53,7 @@ let postingQuestions = [
 
     // bid list function 
     function bidList(answers) {
-        return ['a','b'];
+         
     }
 
     // function for posting interface 
