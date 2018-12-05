@@ -39,6 +39,7 @@ cli.prompt(postOrBid)
         } 
         else if (response.postOrBid === 'Bid') {
             // call bidding interface 
+            IBid();
         }
         else {
             // something weird happened 
@@ -47,7 +48,18 @@ cli.prompt(postOrBid)
 
     // function for bidding interface 
     function IBid() {
-        // load prompt that takes in bidding info? 
+        // receive data from John's function 
+        cli.prompt([
+            {
+                type: 'list',
+                name: 'bids',
+                message: 'What item would you like to bid on?',
+                choices: bidList()
+            }
+        ])
+        .then(function (res) {
+            console.log(res);
+        });
 
     }
 
@@ -62,3 +74,9 @@ cli.prompt(postOrBid)
         
         
     }
+
+    // bid list function 
+    function bidList(answers) {
+        return ['a','b'];
+    }
+
