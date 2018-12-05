@@ -1,5 +1,7 @@
 const cli = require('inquirer'); 
+const query = require('./query.js');
 
+// post or bid command line object for inquirer
 let postOrBid = [
     {
         type: 'list',
@@ -9,7 +11,7 @@ let postOrBid = [
     }
 ]
 
-// posting questions 
+// post a new ad command line object for inquirer
 let postingQuestions = [
     {
         type: 'input',
@@ -29,22 +31,7 @@ let postingQuestions = [
     }
 ]
 
-// opening prompt 
-cli.prompt(postOrBid)
-    .then(function(response) {
-        // if post, call a posting interface 
-        if (response.postOrBid === 'Post') {
-            // call posting interface 
-            IPost();
-        } 
-        else if (response.postOrBid === 'Bid') {
-            // call bidding interface 
-            IBid();
-        }
-        else {
-            // something weird happened 
-        }
-    });
+
 
     // function for bidding interface 
     function IBid() {
@@ -63,6 +50,11 @@ cli.prompt(postOrBid)
 
     }
 
+    // bid list function 
+    function bidList(answers) {
+        return ['a','b'];
+    }
+
     // function for posting interface 
     function IPost() {
         // create questions object 
@@ -75,8 +67,23 @@ cli.prompt(postOrBid)
         
     }
 
-    // bid list function 
-    function bidList(answers) {
-        return ['a','b'];
+    
+
+    // call prompt at open of app
+
+cli.prompt(postOrBid)
+.then(function(response) {
+    // if post, call a posting interface 
+    if (response.postOrBid === 'Post') {
+        // call posting interface 
+        IPost();
+    } 
+    else if (response.postOrBid === 'Bid') {
+        // call bidding interface 
+        IBid();
     }
+    else {
+        // something weird happened 
+    }
+});
 
