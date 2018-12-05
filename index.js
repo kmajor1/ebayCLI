@@ -26,10 +26,6 @@ let postingQuestions = [
         type: 'input',
         name: 'itemMSRP',
         message: 'Please enter an MSRP:'
-    },
-    {
-        type: 'input',
-        name: 'item'
     }
 ]
 
@@ -61,6 +57,7 @@ cli.prompt(postOrBid)
         cli.prompt(postingQuestions)
             .then(function (res) {
                 console.log(res); 
+                // send this object somewhere for use 
             })
         
         
