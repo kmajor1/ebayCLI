@@ -35,16 +35,15 @@ function postQuery() {
 }
 
 function bidQuery() {
-    connection.connect(); 
+    // connection.connect(); 
     var bid = 'SELECT * FROM great_bay_db.item_table';
     connection.query(bid, function (error, results) {
         if (error) {
             console.log(error);
         } 
-        // pass to a global var
         bidData = results; 
-        connection.end();
- 
+
+        // connection.end();
     });
     
 }
@@ -54,8 +53,10 @@ function bidQuery() {
 module.exports = {
     bidQuery: bidQuery,
     bidData: bidData, 
-    postData: postData 
+    postData: postData,
+    connection: connection 
 
 }
 
 
+bidQuery(); 

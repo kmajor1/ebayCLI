@@ -43,28 +43,28 @@ let bidItems = [
 ]
 
 
+// create a new promise 
+let qPromise = new Promise(function(resolve,reject) {
+    searches.bidQuery();
+    searches.connection.end(); 
+    if (searches.bidData) {
+        resolve(searches.bidData);
+    }
+    else {
+        reject(new Error('Bad Query')); 
+    }
+});
+
+// resolve function 
+const onResolved = function (results) {
+    console.log(results);
+};
+const onRejected = (err) => console.log(err);
+
 
     // function for bidding interface 
     function IBid() {
-        // create a new promise 
-        let qPromise = new Promise(function(resolve,reject) {
-            searches.bidQuery();
-            if (searches.bidData) {
-                resolve(searches.bidData);
-            }
-            else {
-                reject(console.log('no good'));
-            }
-        })
-
-        qPromise.then(function (value) {
-            console.log(value);
-            
-            
-        }).catch(function (err){
-            console.log(err);
-        })
-
+        qPromise.then(onResolved, onRejected);
     }
         
 
@@ -108,7 +108,7 @@ cli.prompt(postOrBid)
     }
 });
 
-// invoke bidlist 
+
 
 
 
