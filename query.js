@@ -43,7 +43,6 @@ function bidQuery() {
         } 
         // pass to a global var
         bidData = results; 
-        console.log(bidData);
         connection.end();
  
     });

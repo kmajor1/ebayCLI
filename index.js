@@ -32,6 +32,16 @@ let postingQuestions = [
     }
 ]
 
+// bid options object 
+let bidItems = [
+    {
+        type: 'list',
+        name: 'bidItems',
+        message: 'which items?',
+        choices: ['a','b']
+    }
+]
+
 
 
     // function for bidding interface 
@@ -39,14 +49,20 @@ let postingQuestions = [
         // create a new promise 
         let qPromise = new Promise(function(resolve,reject) {
             searches.bidQuery();
-            resolve(searches.bidData);
-            reject(console.log('no good'));
+            if (searches.bidData) {
+                resolve(searches.bidData);
+            }
+            else {
+                reject(console.log('no good'));
+            }
         })
 
         qPromise.then(function (value) {
             console.log(value);
             
             
+        }).catch(function (err){
+            console.log(err);
         })
 
     }
