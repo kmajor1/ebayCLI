@@ -9,7 +9,23 @@ let postOrBid = [
     }
 ]
 
+// opening prompt 
 cli.prompt(postOrBid)
     .then(function(response) {
-        console.log(response);
-    })
+        // if post, call a posting interface 
+        if (response.postOrBid === 'Post') {
+            // call posting interface 
+        } 
+        else if (response.postOrBid === 'Bid') {
+            // call bidding interface 
+        }
+        else {
+            // something weird happened 
+        }
+    });
+
+    // function for bidding interface 
+    function IBid() {
+        // load prompt that takes in bidding info? 
+
+    }
